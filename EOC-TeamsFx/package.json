@@ -1,5 +1,5 @@
 {
-    "name": "MIFTEOC",
+    "name": "mifteoc",
     "version": "0.0.1",
     "description": "",
     "author": "",
@@ -20,5 +20,5 @@
     "dependencies": {
         "@pnp/sp": "^2.11.0"
     }
-    
+
 }
