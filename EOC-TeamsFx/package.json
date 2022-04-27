@@ -1,5 +1,5 @@
 {
-    "name": "mifteoc",
+    "name": "MIFTEOC",
     "version": "0.0.1",
     "description": "",
     "author": "",
@@ -9,16 +9,11 @@
         "installAll": "npm run install:tabs"
     },
     "devDependencies": {
-        "@microsoft/teamsfx-cli": "^0.14.0",
+        "@microsoft/teamsfx-cli": "0.*",
         "sass": "^1.44.0"
-    },
-    "resolutions": {
-        "async": ">=2.6.4",
-        "moment": ">=2.29.2"
     },
     "license": "MIT",
     "dependencies": {
         "@pnp/sp": "^2.11.0"
     }
-
 }
