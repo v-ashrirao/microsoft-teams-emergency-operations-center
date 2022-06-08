@@ -3,8 +3,8 @@
 1. The current version of the Microsoft Teams Emergency Operations Center operates as an app in Microsoft Teams that is installed locally in your tenant by your tenant administrator or any user who has the capability to side load the application.
 2. Once installed, it can be accessed via "+Add a tab" option at the top of the channel within a team. **Channel > Add a tab > TEOC**
 3. The app will enable users to create new incidents, modify existing incidents and view the incidents on a dashboard.
-4. The app will create a team for each incident with default channels so that users can track the activities for each incident in specific team.
-5. There are 3 major components in the Microsoft Teams Emergency Operations Center App Template -
+4. The app will create a team for each incident with default channel so that users track the activities for each incident in specific structured Teams channels.
+5. There are 3 major components in the Microsoft Teams Emergency Operations Center App -
     1. Incident Details Dashboard
     2. New Incident Form
     3. Update Incident Form
@@ -15,7 +15,7 @@
 
     ![TEOC Login Page](./Images/LoginPage.png)
 
-2. On click of "Login" button, a pop up will open which will list all the required permissions that the app needs. If you're an IT admin, you can check the checkbox for "Consent on behalf of your organization" to grant the permissions for all users.
+2. On click of "Login" button, a pop up will open which will list all the required permissions that the app needs. If you're an Microsoft 365 admin, you can check the checkbox for "Consent on behalf of your organization" to grant the permissions for all users.
 
     ![TEOC App Permissions](./Images/AppPermissisons.png)
 
@@ -67,7 +67,7 @@
 
 8. Along with incident below mentioned entities will also be created. 
 
-    * Teams will be created with 6 channels - General, Announcement, Assessment, Logistics, Planning and Recovery.
+    * A team will be created with 6 channels - General, Announcement, Assessment, Logistics, Planning and Recovery.
     * Incident Commander along with the user who created incident will be added as owners to the Teams.
     * Users added during Role assignment will be added as members to the Teams.
     * Tags will be created for roles added in the incident. Incident Commander tag will be created by default.

@@ -434,7 +434,7 @@
             },
             {
               "name": "WEBSITE_NODE_DEFAULT_VERSION",
-              "value": "16.13.0"
+              "value": "~14"
             }
           ]
         }
