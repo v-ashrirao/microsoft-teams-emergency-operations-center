@@ -435,6 +435,10 @@
             {
               "name": "WEBSITE_NODE_DEFAULT_VERSION",
               "value": "~14"
+            },
+            {
+              "name":"REACT_APP_SHAREPOINT_SITE_NAME",
+              "value": ""
             }
           ]
         }

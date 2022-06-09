@@ -114,6 +114,10 @@ export class EOCHome extends React.Component<IEOCHomeProps, IEOCHomeState>  {
                 }
             });
 
+            console.log(" key ",process.env.REACT_APP_APPINSIGHTS_INSTRUMENTATIONKEY);
+            console.log(" site ",process.env.REACT_APP_SHAREPOINT_SITE_NAME);
+            
+
             appInsights.loadAppInsights();
         } catch (error) {
             this.setState({
