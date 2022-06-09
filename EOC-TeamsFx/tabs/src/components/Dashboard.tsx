@@ -26,6 +26,7 @@ export interface IDashboardProps {
     hideMessageBar(): void;
     appInsights: ApplicationInsights;
     userPrincipalName: any;
+    siteName:any;
 }
 
 export interface IDashboardState {
@@ -323,13 +324,13 @@ class Dashboard extends React.PureComponent<IDashboardProps, IDashboardState> {
                                         />
                                     </div>
                                     <div className="dashboard-link">
-                                        <a title="Manage Roles" href={`https://${this.props.tenantName}/sites/${siteConfig.siteName}/lists/${siteConfig.roleAssignmentList}`} target='_blank' rel="noreferrer">
+                                        <a title="Manage Roles" href={`https://${this.props.tenantName}/sites/${this.props.siteName}/lists/${siteConfig.roleAssignmentList}`} target='_blank' rel="noreferrer">
                                             <img src={require("../assets/Images/Manage Roles.svg").default} alt="Manage Roles" />
                                             <span>Manage Roles</span>
                                         </a>
                                     </div>
                                     <div className="dashboard-link">
-                                        <a title="Manage Incident Types" href={`https://${this.props.tenantName}/sites/${siteConfig.siteName}/lists/${siteConfig.incTypeList}`} target='_blank' rel="noreferrer">
+                                        <a title="Manage Incident Types" href={`https://${this.props.tenantName}/sites/${this.props.siteName}/lists/${siteConfig.incTypeList}`} target='_blank' rel="noreferrer">
                                             <img src={require("../assets/Images/Manage Incident Types.svg").default} alt="Manage Incident Types" />
                                             Manage Incident Types
                                         </a>

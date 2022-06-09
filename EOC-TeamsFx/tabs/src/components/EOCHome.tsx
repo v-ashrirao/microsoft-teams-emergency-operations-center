@@ -40,12 +40,14 @@ interface IEOCHomeState {
     showLoader: boolean,
     showNoAccessMessage: boolean;
     userPrincipalName: any;
+    siteName: any;
 }
 
 interface IEOCHomeProps {
 }
 
 let localeStrings = new LocalizedStrings(localizedStrings);
+let siteName = process.env.REACT_APP_SHAREPOINT_SITE_NAME;
 
 export class EOCHome extends React.Component<IEOCHomeProps, IEOCHomeState>  {
     private credential = new TeamsUserCredential();
@@ -82,7 +84,8 @@ export class EOCHome extends React.Component<IEOCHomeProps, IEOCHomeState>  {
             isEditMode: false,
             showLoader: false,
             showNoAccessMessage: false,
-            userPrincipalName: null
+            userPrincipalName: null,
+            siteName: ''
         }
     }
 
@@ -114,11 +117,13 @@ export class EOCHome extends React.Component<IEOCHomeProps, IEOCHomeState>  {
                 }
             });
 
-            console.log(" key ",process.env.REACT_APP_APPINSIGHTS_INSTRUMENTATIONKEY);
-            console.log(" site ",process.env.REACT_APP_SHAREPOINT_SITE_NAME);
-            
+            console.log(" key ", process.env.REACT_APP_APPINSIGHTS_INSTRUMENTATIONKEY);
+            console.log(" site ", process.env.REACT_APP_SHAREPOINT_SITE_NAME);
 
             appInsights.loadAppInsights();
+            this.setState({
+                siteName: process.env.REACT_APP_SHAREPOINT_SITE_NAME
+            });
         } catch (error) {
             this.setState({
                 locale: constants.defaultLocale
@@ -208,7 +213,7 @@ export class EOCHome extends React.Component<IEOCHomeProps, IEOCHomeState>  {
             const tenantName = await this.dataService.getTenantDetails(graphConfig.rootSiteGraphEndpoint, this.state.graph);
 
             // Form the graph end point to get the SharePoint site Id
-            const urlForSiteId = graphConfig.spSiteGraphEndpoint + tenantName + ":/sites/" + siteConfig.siteName + "?$select=id";
+            const urlForSiteId = graphConfig.spSiteGraphEndpoint + tenantName + ":/sites/" + siteName + "?$select=id";
 
             // get SharePoint site Id
             const siteDetails = await this.dataService.getGraphData(urlForSiteId, this.state.graph);
@@ -418,6 +423,7 @@ export class EOCHome extends React.Component<IEOCHomeProps, IEOCHomeState>  {
                                                 hideMessageBar={this.hideMessageBar}
                                                 appInsights={appInsights}
                                                 userPrincipalName={this.state.userPrincipalName}
+                                                siteName={siteName}
                                             />
                                             :
                                             <>

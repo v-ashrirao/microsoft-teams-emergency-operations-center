@@ -1,5 +1,4 @@
 {
-    "siteName": "TEOCSite",
     "incidentsList": "TEOC-IncidentTransaction",
     "assessmentsList": "TEOC-Assessments",
     "incStatusList": "TEOC-IncidentStatus",
