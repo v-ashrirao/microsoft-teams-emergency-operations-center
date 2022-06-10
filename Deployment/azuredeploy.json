@@ -30,6 +30,13 @@
         "description": "The ID of the tenant to which the app will be deployed."
       }
     },
+    "SharePointSiteName":{
+      "type": "string",
+      "minLength": 1,
+      "metadata": {
+        "description": "The SharePoint Site Name."
+      }
+    },
     "m365OauthAuthorityHost": {
       "type": "string",
       "minLength": 1,
