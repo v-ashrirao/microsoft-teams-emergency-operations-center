@@ -293,6 +293,9 @@
           },
           "m365OauthAuthorityHost": {
             "value": "[parameters('m365OauthAuthorityHost')]"
+          },
+          "SharePointSiteName":{
+            "value": "[parameters('SharePointSiteName')]"
           }
         },
         "template": {
@@ -340,6 +343,13 @@
               "metadata": {
                 "description": "The base name to use for the resources that will be provisioned."
               }
+            },
+            "SharePointSiteName":{
+              "type": "string",
+              "minLength": 1,
+              "metadata": {
+                "description": "The base name to use for the resources that will be provisioned."
+              }
             }
           },
           "variables": {
@@ -357,7 +367,8 @@
             "outlookWebAppClientId": "00000002-0000-0ff1-ce00-000000000000",
             "authorizedClientApplicationIds": "[format('{0};{1};{2};{3};{4};{5}', variables('teamsMobileOrDesktopAppClientId'), variables('teamsWebAppClientId'), variables('officeWebAppClientId1'), variables('officeWebAppClientId2'), variables('outlookDesktopAppClientId'), variables('outlookWebAppClientId'))]",
             "identifierURI": "[concat(parameters('baseResourceName'), '.azurewebsites.net')]",
-            "tabAppEndpoint": "[concat(parameters('baseResourceName'), '.azurewebsites.net')]"
+            "tabAppEndpoint": "[concat(parameters('baseResourceName'), '.azurewebsites.net')]",
+            "SharePointSiteName":"[parameters('SharePointSiteName')]"
           },
           "resources": [
             {
@@ -438,7 +449,7 @@
             },
             {
               "name":"REACT_APP_SHAREPOINT_SITE_NAME",
-              "value": ""
+              "value": "[parameters('SharePointSiteName')]"
             }
           ]
         }
