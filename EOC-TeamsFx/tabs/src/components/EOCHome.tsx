@@ -6,7 +6,6 @@ import { Button, Loader, Dialog } from "@fluentui/react-northstar";
 import { MessageBar, MessageBarType, initializeIcons } from '@fluentui/react';
 import Dashboard from './Dashboard';
 import EocHeader from './EocHeader';
-import siteConfig from '../config/siteConfig.json';
 import * as graphConfig from '../common/graphConfig';
 import CommonService from "../common/CommonService";
 import * as constants from '../common/Constants';
@@ -18,8 +17,10 @@ import { localizedStrings } from "../locale/LocaleStrings";
 import { ApplicationInsights } from '@microsoft/applicationinsights-web';
 
 initializeIcons();
+//Global Variables
 let appInsights: ApplicationInsights;
-
+//Get site name from ARMS template(environment variable)
+let siteName = process.env.REACT_APP_SHAREPOINT_SITE_NAME?.toString().replace(/\s+/g, '');
 interface IEOCHomeState {
     showLoginPage: boolean;
     graph: Client;
@@ -40,14 +41,12 @@ interface IEOCHomeState {
     showLoader: boolean,
     showNoAccessMessage: boolean;
     userPrincipalName: any;
-    siteName: any;
 }
 
 interface IEOCHomeProps {
 }
 
 let localeStrings = new LocalizedStrings(localizedStrings);
-let siteName = process.env.REACT_APP_SHAREPOINT_SITE_NAME;
 
 export class EOCHome extends React.Component<IEOCHomeProps, IEOCHomeState>  {
     private credential = new TeamsUserCredential();
@@ -84,8 +83,7 @@ export class EOCHome extends React.Component<IEOCHomeProps, IEOCHomeState>  {
             isEditMode: false,
             showLoader: false,
             showNoAccessMessage: false,
-            userPrincipalName: null,
-            siteName: ''
+            userPrincipalName: null
         }
     }
 
@@ -117,13 +115,7 @@ export class EOCHome extends React.Component<IEOCHomeProps, IEOCHomeState>  {
                 }
             });
 
-            console.log(" key ", process.env.REACT_APP_APPINSIGHTS_INSTRUMENTATIONKEY);
-            console.log(" site ", process.env.REACT_APP_SHAREPOINT_SITE_NAME);
-
             appInsights.loadAppInsights();
-            this.setState({
-                siteName: process.env.REACT_APP_SHAREPOINT_SITE_NAME
-            });
         } catch (error) {
             this.setState({
                 locale: constants.defaultLocale
